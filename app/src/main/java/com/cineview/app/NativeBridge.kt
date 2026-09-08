@@ -10,7 +10,7 @@ import com.cineview.app.player.PlayerActivity
 import com.cineview.app.security.IntegrityChecker
 import com.cineview.app.update.JsUpdateManager
 import com.cineview.app.update.UpdateManager
-import com.cineview.vip.BuildConfig
+import com.cineview.app.BuildConfig
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
