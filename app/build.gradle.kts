@@ -7,6 +7,9 @@ android {
     buildFeatures {
         buildConfig = true
     }
+    buildFeatures {
+        buildConfig = true
+    }
     namespace = "com.cineview.vip"
     compileSdk = 35
 
