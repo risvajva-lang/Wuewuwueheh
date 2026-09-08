@@ -2,11 +2,9 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
 }
-
 android {
     namespace = "com.cineview.app"
     compileSdk = 35
-
     defaultConfig {
         applicationId = "com.cineview.app"
         minSdk = 21
@@ -14,11 +12,9 @@ android {
         versionCode = 1
         versionName = "1.0"
     }
-
     buildFeatures {
         buildConfig = true
     }
-
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -29,7 +25,6 @@ android {
         }
     }
 }
-
 dependencies {
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
