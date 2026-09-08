@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+Disallow: /wp-admin/
+Disallow: /wp-includes/
+Disallow: /api/
+
+Sitemap: https://cineview.xo.je/sitemap.xml
+Sitemap: https://cineview.xo.je/sitemap_index.xml
+Sitemap: https://cineview.xo.je/sitemap-pages.xml
+Sitemap: https://cineview.xo.je/sitemap-movies.xml
+Sitemap: https://cineview.xo.je/sitemap-tv.xml
+Sitemap: https://cineview.xo.je/sitemap-anime.xml
+Sitemap: https://cineview.xo.je/sitemap-seasons.xml
+Sitemap: https://cineview.xo.je/sitemap-episodes.xml

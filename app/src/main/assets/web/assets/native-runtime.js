@@ -1,0 +1,20 @@
+(function(){
+  const n=window.CineViewNative;
+  window.CineViewAndroid={
+    available:!!n,
+    info:()=>n?JSON.parse(n.getRuntimeInfo()):null,
+    play:(url,title)=>n&&n.playNative(url,title||''),
+    download:(url,title)=>n?n.download(url,title||'CineView'):null,
+    share:(text,title)=>n&&n.share(text,title||'CineView'),
+    integrity:()=>n?JSON.parse(n.integrity()):null,
+    openExternal:(url)=>n&&n.openExternal(url)
+  };
+  window.CineViewAndroid.update={
+    checkJs:(manifest)=>n?n.checkJsUpdate(manifest):null,
+    checkJsAsync:(manifest,callback)=>n?n.checkJsUpdateAsync(manifest,callback):false,
+    installJs:(url,sha256)=>n?n.installJsUpdate(url,sha256):false,
+    installJsAsync:(url,sha256,callback)=>n?n.installJsUpdateAsync(url,sha256,callback):false,
+    rollbackJs:()=>n?n.rollbackJsUpdate():false,
+    installApk:(url,sha256)=>n?n.downloadAndInstallApk(url,sha256):false
+  };
+})();

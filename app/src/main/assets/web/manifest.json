@@ -1,0 +1,21 @@
+{
+  "name": "نافذة السينما VIP - سيني فيو CineView",
+  "short_name": "نافذة السينما",
+  "description": "نافذة السينما (CineView) المنصة الرائدة لمشاهدة وتحميل أحدث الأفلام والمسلسلات والأنمي مترجمة ومدبلجة بجودة 4K فائقة وسيرفرات بث مباشرة وسريعة بدون إعلانات.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#060913",
+  "theme_color": "#060913",
+  "lang": "ar",
+  "dir": "rtl",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23f59e0b'><path d='M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 3v2h2V7H4zm0 4v2h2v-2H4zm0 4v2h2v-2H4zm16-8v2h-2V7h2zm0 4v2h-2v-2h2zm0 4v2h-2v-2h2z'/></svg>",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["entertainment", "video", "movies"]
+}

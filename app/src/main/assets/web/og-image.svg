@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#060913"/>
+      <stop offset="50%" stop-color="#0d1428"/>
+      <stop offset="100%" stop-color="#180b2a"/>
+    </linearGradient>
+    <linearGradient id="neon" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#a855f7"/>
+      <stop offset="50%" stop-color="#ec4899"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="30" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  
+  <!-- Subtle ambient circles -->
+  <circle cx="200" cy="150" r="180" fill="#9333ea" opacity="0.15" filter="url(#glow)"/>
+  <circle cx="1000" cy="480" r="220" fill="#ec4899" opacity="0.12" filter="url(#glow)"/>
+  
+  <!-- Main Cinema Logo Icon -->
+  <g transform="translate(530, 110)">
+    <rect width="140" height="140" rx="32" fill="#0f172a" stroke="url(#neon)" stroke-width="4"/>
+    <path d="M30 40h80a8 8 0 0 1 8 8v44a8 8 0 0 1-8 8H30a8 8 0 0 1-8-8V48a8 8 0 0 1 8-8zm0 10v8h10v-8H30zm0 18v8h10v-8H30zm70-18v8h10v-8h-10zm0 18v8h10v-8h-10z" fill="url(#neon)"/>
+    <polygon points="62,58 84,70 62,82" fill="#fbbf24"/>
+  </g>
+  
+  <!-- Main Title -->
+  <text x="600" y="330" text-anchor="middle" fill="#ffffff" font-family="'Cairo', 'Tajawal', sans-serif" font-size="54" font-weight="900">
+    نافذة السينما VIP - سيني فيو CineView
+  </text>
+  
+  <!-- Tagline -->
+  <text x="600" y="400" text-anchor="middle" fill="url(#neon)" font-family="'Cairo', 'Tajawal', sans-serif" font-size="30" font-weight="700">
+    المنصة الرائدة لمشاهدة الأفلام والمسلسلات والأنمي اون لاين بجودة 4K
+  </text>
+  
+  <!-- Features Pills -->
+  <g transform="translate(600, 480)" text-anchor="middle" font-family="'Cairo', 'Tajawal', sans-serif" font-size="20" font-weight="600" fill="#e2e8f0">
+    <rect x="-420" y="-20" width="240" height="46" rx="23" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="-300" y="10">🎬 أحدث الأفلام والمسلسلات</text>
+    
+    <rect x="-130" y="-20" width="260" height="46" rx="23" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="0" y="10">⚡ 36 سيرفر بث فائق السرعة</text>
+    
+    <rect x="180" y="-20" width="240" height="46" rx="23" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="300" y="10">🛡️ بدون إعلانات وبجودة 4K</text>
+  </g>
+  
+  <!-- Domain Badge -->
+  <text x="600" y="575" text-anchor="middle" fill="#94a3b8" font-family="monospace" font-size="20">
+    https://cineview.xo.je
+  </text>
+</svg>

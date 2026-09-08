@@ -1,0 +1,96 @@
+name: Build CineView VIP APK
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cineview-android-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: gradle
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install Android SDK 35
+        run: sdkmanager "platform-tools" "platforms;android-35" "build-tools;35.0.0"
+
+      - name: Set up Gradle 8.10.2
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.10.2'
+
+      - name: Validate source tree
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f settings.gradle.kts
+          test -f build.gradle.kts
+          test -f app/build.gradle.kts
+          test -f app/src/main/AndroidManifest.xml
+          test -f app/src/main/java/com/cineview/vip/MainActivity.java
+          test -f app/src/main/java/com/cineview/app/CineViewApp.kt
+          test -f app/src/main/java/com/cineview/app/player/PlaybackService.kt
+          test -f app/src/main/assets/web/index.html
+          test -f app/src/main/assets/web/assets/index.js
+          test -f app/src/main/assets/web/assets/native-runtime.js
+          grep -q '/assets/web/assets/index.js' app/src/main/assets/web/index.html
+
+      - name: Run repository source audit
+        run: bash tools/source-audit.sh
+
+      - name: Run Kotlin/Java source sanity checks
+        shell: bash
+        run: |
+          set -euo pipefail
+          ! grep -R "com.cineview.app.R" -n app/src/main/java
+          ! grep -R "runBlocking" -n app/src/main/java
+          test -f app/src/main/java/com/cineview/app/security/IntegrityChecker.kt
+          grep -q "firstOrNull" app/src/main/java/com/cineview/app/security/IntegrityChecker.kt
+
+      - name: Gradle environment
+        run: gradle --version
+
+      - name: Unit tests
+        run: ./gradlew --no-daemon --stacktrace testDebugUnitTest
+
+      - name: Build Debug APK
+        run: ./gradlew --no-daemon --stacktrace clean assembleDebug
+
+      - name: Verify APK exists and is signed
+        shell: bash
+        run: |
+          set -euo pipefail
+          APK="app/build/outputs/apk/debug/app-debug.apk"
+          test -s "$APK"
+          "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose "$APK"
+          sha256sum "$APK" | tee app-debug.sha256
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: CineView-VIP-Debug-APK
+          path: |
+            app/build/outputs/apk/debug/app-debug.apk
+            app-debug.sha256
+          if-no-files-found: error
+          retention-days: 30
